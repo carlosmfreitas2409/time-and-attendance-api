@@ -1,4 +1,4 @@
-import { getRepository, Repository } from 'typeorm';
+import { getRepository, In, Repository } from 'typeorm';
 
 import { Skill } from '../../entities/Skill';
 import { ISkillsRepository } from '../ISkillsRepository';
@@ -12,6 +12,12 @@ class SkillsRepository implements ISkillsRepository {
 
   async list(): Promise<Skill[]> {
     return this.repository.find();
+  }
+
+  async listByIDs(ids: number[]): Promise<Skill[]> {
+    return this.repository.find({
+      where: { id: In(ids) },
+    });
   }
 
   async findById(id: number): Promise<Skill> {

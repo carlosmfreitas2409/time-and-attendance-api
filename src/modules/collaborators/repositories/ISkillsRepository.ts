@@ -2,6 +2,7 @@ import { Skill } from '../entities/Skill';
 
 interface ISkillsRepository {
   list(): Promise<Skill[]>;
+  listByIDs(ids: number[]): Promise<Skill[]>;
   findById(id: number): Promise<Skill>;
   findByName(name: string): Promise<Skill>;
   create(name: string): Promise<void>;
