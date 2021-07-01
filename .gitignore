@@ -1,5 +1,8 @@
 node_modules
 .vscode
+
+ormconfig.json
+
 .env
 .env.local
 .env.production
