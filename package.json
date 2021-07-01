@@ -8,6 +8,7 @@
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli"
   },
   "dependencies": {
+    "brazilian-class-validator": "^0.1.6",
     "class-transformer": "^0.4.0",
     "class-transformer-validator": "^0.9.1",
     "class-validator": "^0.13.1",
