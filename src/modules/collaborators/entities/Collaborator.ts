@@ -5,9 +5,11 @@ import {
   Entity,
   JoinTable,
   ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
+import { Appointment } from './Appointment';
 import { Skill } from './Skill';
 
 @Entity('collaborators')
@@ -44,6 +46,9 @@ class Collaborator {
 
   @Column()
   validated_at: Date;
+
+  @OneToMany(() => Appointment, appointment => appointment.collaborator)
+  appointments: Appointment[];
 
   @CreateDateColumn()
   created_at: Date;
