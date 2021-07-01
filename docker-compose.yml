@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+  database:
+    image: postgres
+    container_name: database_timeAttendance
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=timeAttendance
+    volumes:
+      - pgdata:/data/postgres
+  app:
+    build: .
+    container_name: timeAttendance
+    ports:
+      - 3333:3333
+    volumes:
+      - .:/usr/app
+    links:
+      - database
+    depends_on:
+      - database
+
+volumes:
+  pgdata:
+    driver: local

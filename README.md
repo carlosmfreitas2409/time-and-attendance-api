@@ -4,8 +4,9 @@
 
 ### Requisitos
 
-- [] Deve ser possível cadastrar uma nova skill
-- [] Deve ser possível listar as skills
+- [x] Deve ser possível cadastrar uma nova skill
+- [x] Deve ser possível listar as skills
+- [x] Deve ser possível deletar uma skill
 - [] Deve ser possível cadastrar um novo colaborador
 - [] Deve ser possível adicionar Skills ao colaborador
 - [] Deve ser possível listar os colaboradores em ordem alfabética
@@ -20,7 +21,8 @@
 
 ### Regras de negócio
 
-- [] Não deve ser possível cadastrar uma nova skill já existente
+- [x] Não deve ser possível cadastrar uma nova skill já existente
+- [x] Não deve ser possível deletar uma nova skill não existente
 - [] Não deve ser possível cadastrar um novo colaborador com e-mail ou CPF já existente
 - [] Não deve ser possível retornar um colaborador não existente
 - [] Não deve ser possível cadastrar um colaborador se os dados não estiverem válidos
