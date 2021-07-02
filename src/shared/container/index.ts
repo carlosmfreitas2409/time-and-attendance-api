@@ -6,6 +6,8 @@ import { AppointmentsRepository } from '../../modules/collaborators/repositories
 import { CollaboratorsRepository } from '../../modules/collaborators/repositories/implementations/CollaboratorsRepository';
 import { SkillsRepository } from '../../modules/collaborators/repositories/implementations/SkillsRepository';
 import { ISkillsRepository } from '../../modules/collaborators/repositories/ISkillsRepository';
+import { UsersRepository } from '../../modules/users/repositories/implementations/UsersRepository';
+import { IUsersRepository } from '../../modules/users/repositories/IUsersRepository';
 
 container.registerSingleton<ISkillsRepository>(
   'SkillsRepository',
@@ -20,4 +22,9 @@ container.registerSingleton<ICollaboratorsRepository>(
 container.registerSingleton<IAppointmentsRepository>(
   'AppointmentsRepository',
   AppointmentsRepository,
+);
+
+container.registerSingleton<IUsersRepository>(
+  'UsersRepository',
+  UsersRepository,
 );

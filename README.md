@@ -15,8 +15,9 @@
 - [X] Deve ser possível retornar um colaborador pela matricula
 - [X] Deve ser possível gravar um ponto
 - [X] Deve ser possível fechar um ponto
-- [] Deve ser possível cadastrar um novo usuário
-- [] Deve ser possível se autenticar como usuário
+- [X] Deve ser possível cadastrar um novo usuário
+- [X] Deve ser possível se autenticar como usuário
+- [x] Deve ser possível tornar um usuário administrador
 - [x] Deve ser possível validar um colaborador
 
 ---
@@ -32,7 +33,9 @@
 - [X] Não deve ser possível gravar um ponto com colaborador não existente.
 - [X] Não deve ser possível gravar um ponto se um já estiver em andamento.
 - [X] Não deve ser possível gravar um ponto se o colaborador não estiver validado.
-- [] Não deve ser possível cadastrar um novo usuário com e-mail já existente
-- [] Não deve ser possível se autenticar se o e-mail/senha estiverem incorretos.
-- [] Não deve ser possível validar um colaborador se não for usuário admin
+- [X] Não deve ser possível cadastrar um novo usuário com e-mail já existente
+- [X] Não deve ser possível se autenticar se o e-mail/senha estiverem incorretos.
+- [x] Não deve ser possível tornar um usuário administrador se o atual não for administrador
+- [x] Não deve ser possível tornar um usuário administrador para o usuário atual
+- [X] Não deve ser possível validar um colaborador se não for usuário admin
 

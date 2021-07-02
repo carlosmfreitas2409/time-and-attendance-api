@@ -7,6 +7,8 @@ import { ShowCollaboratorByMatriculationController } from '../modules/collaborat
 import { UnvalidateCollaboratorController } from '../modules/collaborators/useCases/unvalidateCollaborator/UnvalidateCollaboratorController';
 import { UpdateCollaboratorController } from '../modules/collaborators/useCases/updateCollaborator/UpdateCollaboratorController';
 import { ValidateCollaboratorController } from '../modules/collaborators/useCases/validateCollaborator/ValidateCollaboratorController';
+import { ensureAdmin } from '../modules/users/middlewares/ensureAdmin';
+import { ensureAuthenticated } from '../modules/users/middlewares/ensureAuthenticated';
 import { bodyValidation } from '../shared/middlewares/bodyValidation';
 
 const collaboratorsRouter = Router();
@@ -40,11 +42,15 @@ collaboratorsRouter.put(
 
 collaboratorsRouter.patch(
   '/:matriculation/validate',
+  ensureAuthenticated,
+  ensureAdmin,
   validateCollaboratorController.handle,
 );
 
 collaboratorsRouter.patch(
   '/:matriculation/unvalidate',
+  ensureAuthenticated,
+  ensureAdmin,
   unvalidateCollaboratorController.handle,
 );
 
