@@ -35,7 +35,7 @@ class RecordAppointmentUseCase {
       await this.appointmentsRepository.findUnclosed(collaborator.id);
 
     if (checkAppointmentUnclosed) {
-      throw new AppError('Already have a appointment in progress.');
+      throw new AppError('Already have a appointment in progress.', 409);
     }
 
     await this.appointmentsRepository.create(collaborator.id);

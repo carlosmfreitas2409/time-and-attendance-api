@@ -30,10 +30,10 @@ class CreateCollaboratorUseCase {
     );
 
     if (userEmailAlreadyExists)
-      throw new AppError('Collaborator with this e-mail already exists!');
+      throw new AppError('Collaborator with this e-mail already exists!', 409);
 
     if (userCPFAlreadyExists)
-      throw new AppError('Collaborator with this CPF already exists!');
+      throw new AppError('Collaborator with this CPF already exists!', 409);
 
     const skillsList = await this.skillsRepository.listByIDs(skills);
 

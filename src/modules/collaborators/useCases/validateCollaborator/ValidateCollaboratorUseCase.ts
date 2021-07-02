@@ -16,7 +16,7 @@ class ValidateCollaboratorUseCase {
     );
 
     if (!collaborator) {
-      throw new AppError('Collaborator does not exists!');
+      throw new AppError('Collaborator does not exists!', 404);
     }
 
     collaborator.validated = true;

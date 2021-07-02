@@ -17,7 +17,7 @@ class ShowCollaboratorByMatriculationUseCase {
     );
 
     if (!collaborator) {
-      throw new AppError('Collaborator does not exist!');
+      throw new AppError('Collaborator does not exist!', 404);
     }
 
     return collaborator;

@@ -32,7 +32,7 @@ class UpdateCollaboratorUseCase {
     );
 
     if (!collaborator) {
-      throw new AppError('Collaborator does not exists!');
+      throw new AppError('Collaborator does not exists!', 404);
     }
 
     const userEmailAlreadyExists =
@@ -43,10 +43,10 @@ class UpdateCollaboratorUseCase {
     );
 
     if (userEmailAlreadyExists && userEmailAlreadyExists.id !== collaborator.id)
-      throw new AppError('Collaborator with this e-mail already exists!');
+      throw new AppError('Collaborator with this e-mail already exists!', 409);
 
     if (userCPFAlreadyExists && userCPFAlreadyExists.id !== collaborator.id)
-      throw new AppError('Collaborator with this CPF already exists!');
+      throw new AppError('Collaborator with this CPF already exists!', 409);
 
     collaborator.name = name;
     collaborator.email = email;
