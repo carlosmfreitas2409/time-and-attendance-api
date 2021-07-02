@@ -1,6 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
-import { AppError } from '../../../../errors/AppError';
+import { AppError } from '@shared/errors/AppError';
+
 import { ICollaboratorRequest } from '../../dtos/ICollaboratorRequest';
 import { ICollaboratorsRepository } from '../../repositories/ICollaboratorsRepository';
 import { ISkillsRepository } from '../../repositories/ISkillsRepository';

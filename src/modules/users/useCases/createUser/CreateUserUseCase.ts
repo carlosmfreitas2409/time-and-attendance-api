@@ -1,7 +1,8 @@
 import { hash } from 'bcryptjs';
 import { inject, injectable } from 'tsyringe';
 
-import { AppError } from '../../../../errors/AppError';
+import { AppError } from '@shared/errors/AppError';
+
 import { IUserRequest } from '../../dtos/IUserRequest';
 import { IUsersRepository } from '../../repositories/IUsersRepository';
 

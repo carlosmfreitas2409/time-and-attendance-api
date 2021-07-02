@@ -1,8 +1,8 @@
 import { Router } from 'express';
 
-import { CreateSkillController } from '../modules/collaborators/useCases/createSkill/CreateSkillController';
-import { DeleteSkillController } from '../modules/collaborators/useCases/deleteSkill/DeleteSkillController';
-import { ListSkillsController } from '../modules/collaborators/useCases/listSkills/ListSkillsController';
+import { CreateSkillController } from '@modules/collaborators/useCases/createSkill/CreateSkillController';
+import { DeleteSkillController } from '@modules/collaborators/useCases/deleteSkill/DeleteSkillController';
+import { ListSkillsController } from '@modules/collaborators/useCases/listSkills/ListSkillsController';
 
 const skillsRouter = Router();
 
