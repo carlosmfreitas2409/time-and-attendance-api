@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-import { CloseAppointmentController } from '../modules/collaborators/useCases/closeAppointment/CloseAppointmentController';
-import { RecordAppointmentController } from '../modules/collaborators/useCases/recordAppointment/RecordAppointmentController';
+import { CloseAppointmentController } from '@modules/collaborators/useCases/closeAppointment/CloseAppointmentController';
+import { RecordAppointmentController } from '@modules/collaborators/useCases/recordAppointment/RecordAppointmentController';
 
 const appointmentsRouter = Router();
 

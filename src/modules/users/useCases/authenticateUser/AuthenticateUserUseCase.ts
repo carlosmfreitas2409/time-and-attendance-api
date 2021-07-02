@@ -2,7 +2,9 @@ import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { inject, injectable } from 'tsyringe';
 
-import { AppError } from '../../../../errors/AppError';
+import authConfig from '@config/auth';
+import { AppError } from '@shared/errors/AppError';
+
 import { User } from '../../entities/User';
 import { IUsersRepository } from '../../repositories/IUsersRepository';
 
@@ -36,9 +38,9 @@ class AuthenticateUserUseCase {
       throw new AppError('Email or password incorrect!', 401);
     }
 
-    const token = sign({}, '2b6d6b0a0bc64b296b702cf1c2e61fd6', {
+    const token = sign({}, authConfig.secret_token, {
       subject: user.id,
-      expiresIn: '1d',
+      expiresIn: authConfig.expires_in_token,
     });
 
     return {

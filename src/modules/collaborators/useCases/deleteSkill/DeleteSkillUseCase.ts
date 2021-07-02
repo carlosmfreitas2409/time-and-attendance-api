@@ -1,5 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
+import { AppError } from '@shared/errors/AppError';
+
 import { ISkillsRepository } from '../../repositories/ISkillsRepository';
 
 @injectable()
@@ -13,7 +15,7 @@ class DeleteSkillUseCase {
     const checkSkillExists = await this.skillsRepository.findById(id);
 
     if (!checkSkillExists) {
-      throw new Error('Skill does not exist!');
+      throw new AppError('Skill does not exist!', 404);
     }
 
     await this.skillsRepository.delete(id);

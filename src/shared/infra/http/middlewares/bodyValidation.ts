@@ -1,7 +1,7 @@
 import { transformAndValidate, ClassType } from 'class-transformer-validator';
 import { NextFunction, Request, Response, RequestHandler } from 'express';
 
-import { formatErrors } from '../../utils/formatErrors';
+import { formatErrors } from '@utils/formatErrors';
 
 export function bodyValidation(
   type: ClassType<Record<string, any>>,

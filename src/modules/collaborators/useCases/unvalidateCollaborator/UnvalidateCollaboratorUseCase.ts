@@ -1,6 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
-import { AppError } from '../../../../errors/AppError';
+import { AppError } from '@shared/errors/AppError';
+
 import { ICollaboratorsRepository } from '../../repositories/ICollaboratorsRepository';
 
 @injectable()
@@ -16,7 +17,7 @@ class UnvalidateCollaboratorUseCase {
     );
 
     if (!collaborator) {
-      throw new AppError('Collaborator does not exists!');
+      throw new AppError('Collaborator does not exists!', 404);
     }
 
     collaborator.validated = false;

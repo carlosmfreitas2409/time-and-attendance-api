@@ -1,5 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
+import { AppError } from '@shared/errors/AppError';
+
 import { ISkillsRepository } from '../../repositories/ISkillsRepository';
 
 @injectable()
@@ -13,7 +15,7 @@ class CreateSkillUseCase {
     const skillAlreadyExists = await this.skillsRepository.findByName(name);
 
     if (skillAlreadyExists) {
-      throw new Error('Skill already exists!');
+      throw new AppError('Skill already exists!', 409);
     }
 
     await this.skillsRepository.create(name);

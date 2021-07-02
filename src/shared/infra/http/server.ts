@@ -1,13 +1,14 @@
 import 'reflect-metadata';
+import 'dotenv/config';
 
 import express from 'express';
 import 'express-async-errors';
 
-import './database';
-import './shared/container';
+import '../typeorm';
+import '@shared/container';
 
+import { globalErrorHandler } from './middlewares/globalErrorHandler';
 import { router } from './routes';
-import { globalErrorHandler } from './shared/middlewares/globalErrorHandler';
 
 const app = express();
 

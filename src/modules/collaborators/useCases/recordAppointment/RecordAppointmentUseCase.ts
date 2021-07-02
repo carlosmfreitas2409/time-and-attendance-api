@@ -1,6 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
-import { AppError } from '../../../../errors/AppError';
+import { AppError } from '@shared/errors/AppError';
+
 import { IAppointmentsRepository } from '../../repositories/IAppointmentsRepository';
 import { ICollaboratorsRepository } from '../../repositories/ICollaboratorsRepository';
 
@@ -35,7 +36,7 @@ class RecordAppointmentUseCase {
       await this.appointmentsRepository.findUnclosed(collaborator.id);
 
     if (checkAppointmentUnclosed) {
-      throw new AppError('Already have a appointment in progress.');
+      throw new AppError('Already have a appointment in progress.', 409);
     }
 
     await this.appointmentsRepository.create(collaborator.id);

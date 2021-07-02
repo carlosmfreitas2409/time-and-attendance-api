@@ -1,6 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
-import { AppError } from '../../../../errors/AppError';
+import { AppError } from '@shared/errors/AppError';
+
 import { Collaborator } from '../../entities/Collaborator';
 import { ICollaboratorsRepository } from '../../repositories/ICollaboratorsRepository';
 
@@ -17,7 +18,7 @@ class ShowCollaboratorByMatriculationUseCase {
     );
 
     if (!collaborator) {
-      throw new AppError('Collaborator does not exist!');
+      throw new AppError('Collaborator does not exist!', 404);
     }
 
     return collaborator;
