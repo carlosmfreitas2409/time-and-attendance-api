@@ -19,6 +19,7 @@
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.6.0",
     "reflect-metadata": "^0.1.13",
+    "swagger-ui-express": "^4.1.6",
     "tsyringe": "^4.5.0",
     "typeorm": "^0.2.34",
     "uuid": "^8.3.2"
@@ -27,6 +28,7 @@
     "@types/bcryptjs": "^2.4.2",
     "@types/express": "^4.17.12",
     "@types/jsonwebtoken": "^8.5.3",
+    "@types/swagger-ui-express": "^4.1.2",
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.28.1",
     "@typescript-eslint/parser": "^4.28.1",
