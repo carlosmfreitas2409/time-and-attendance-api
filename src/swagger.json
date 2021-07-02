@@ -44,6 +44,9 @@
         "tags": ["Skill"],
         "summary": "Create a skill",
         "description": "Create a new skill",
+        "security": [
+          { "bearerAuth": []}
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -68,6 +71,9 @@
         "tags": ["Skill"],
         "summary": "Delete a skill",
         "description": "Delete a specific skill",
+        "security": [
+          { "bearerAuth": []}
+        ],
         "parameters": [
           {
             "name": "id",
