@@ -18,7 +18,10 @@ class CollaboratorsRepository implements ICollaboratorsRepository {
   }
 
   async findByID(id: number): Promise<Collaborator> {
-    return this.repository.findOne({ id });
+    return this.repository.findOne({
+      where: { id },
+      relations: ['appointments'],
+    });
   }
 
   async findByEmail(email: string): Promise<Collaborator> {
