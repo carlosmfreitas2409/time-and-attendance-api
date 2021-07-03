@@ -1,0 +1,543 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Time & Attendance Documentation",
+    "description": "This is a REST API application of \"Time & Attendance\" project",
+    "version": "0.1.0",
+    "license": {
+      "name": "Licensed Under MIT",
+      "url": "https://spdx.org/licenses/MIT.html"
+    },
+    "contact": {
+      "email": "carlos@freitas.eti.br"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3333/v1",
+      "description": "Development"
+    }
+  ],
+  "paths": {
+    "/skills": {
+      "get": {
+        "tags": ["Skill"],
+        "summary": "List skills",
+        "description": "List skills",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Skill"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Skill"],
+        "summary": "Create a skill",
+        "description": "Create a new skill",
+        "security": [
+          { "bearerAuth": []}
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Skill"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "409": {
+            "description": "Skill already exists"
+          }
+        }
+      }
+    },
+    "/skills/{id}": {
+      "delete": {
+        "tags": ["Skill"],
+        "summary": "Delete a skill",
+        "description": "Delete a specific skill",
+        "security": [
+          { "bearerAuth": []}
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Skill id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Succeed"
+          },
+          "404": {
+            "description": "Skill does not exists"
+          }
+        }
+      }
+    },
+    "/collaborators": {
+      "get": {
+        "tags": ["Collaborator"],
+        "summary": "List collaborators",
+        "description": "List collaborators in alphabetical order",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Collaborator"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Collaborator"],
+        "summary": "Create collaborator",
+        "description": "Create a new collaborator",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "409": {
+            "description": "Collaborator with email/CPF already exists"
+          }
+        }
+      }
+    },
+    "/collaborators/{matriculation}": {
+      "get": {
+        "tags": ["Collaborator"],
+        "summary": "Show collaborator",
+        "description": "Show a specific collaborator by matriculation",
+        "parameters": [
+          {
+            "name": "matriculation",
+            "in": "path",
+            "description": "Collaborator matriculation",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/Collaborator"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Collaborator does not exists!"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Collaborator"],
+        "summary": "Update collaborator",
+        "description": "Update a specific collaborator by matriculation",
+        "parameters": [
+          {
+            "name": "matriculation",
+            "in": "path",
+            "description": "Collaborator matriculation",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "cpf": {
+                    "type": "string"
+                  },
+                  "phone_number": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Updated"
+          },
+          "404": {
+            "description": "Collaborator does not exists"
+          },
+          "409": {
+            "description": "Collaborator with email/CPF already exists"
+          }
+        }
+      }
+    },
+    "/collaborators/{matriculation}/validate": {
+      "patch": {
+        "tags": ["Collaborator"],
+        "summary": "Validate collaborator",
+        "description": "Validate a collaborator by matriculation",
+        "security": [
+          { "bearerAuth": []}
+        ],
+        "parameters": [
+          {
+            "name": "matriculation",
+            "in": "path",
+            "description": "Collaborator matriculation",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Succeed"
+          },
+          "404": {
+            "description": "Collaborator does not exists"
+          }
+        }
+      }
+    },
+    "/collaborators/{matriculation}/unvalidate": {
+      "patch": {
+        "tags": ["Collaborator"],
+        "summary": "Unvalidate collaborator",
+        "description": "Unvalidate a collaborator by matriculation",
+        "security": [
+          { "bearerAuth": []}
+        ],
+        "parameters": [
+          {
+            "name": "matriculation",
+            "in": "path",
+            "description": "Collaborator matriculation",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Succeed"
+          },
+          "404": {
+            "description": "Collaborator does not exists"
+          }
+        }
+      }
+    },
+    "/appointments/{collaborator_matriculation}": {
+      "post": {
+        "tags": ["Appointment"],
+        "summary": "Create appointment",
+        "description": "Create a appointment by collaborator matriculation",
+        "parameters": [
+          {
+            "name": "collaborator_matriculation",
+            "in": "path",
+            "description": "Collaborator matriculation",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "404": {
+            "description": "Collaborator does not exists"
+          },
+          "401": {
+            "description": "Collaborator is not validated"
+          },
+          "409": {
+            "description": "Already have a appointment in progress"
+          }
+        }
+      }
+    },
+    "/appointments/{collaborator_matriculation}/close": {
+      "patch": {
+        "tags": ["Appointment"],
+        "summary": "Close appointment",
+        "description": "Close a appointment by collaborator matriculation",
+        "parameters": [
+          {
+            "name": "collaborator_matriculation",
+            "in": "path",
+            "description": "Collaborator matriculation",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Succeed"
+          },
+          "404": {
+            "description": "There is no appointment in progress"
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Create user",
+        "description": "Create a new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "409": {
+            "description": "User with email already exists"
+          }
+        }
+      }
+    },
+    "/users/{user_id}/permission": {
+      "patch": {
+        "tags": ["User"],
+        "summary": "Change user permission",
+        "description": "Change the user's permission. If it is admin, remove admin. If not admin, as add admin.",
+        "security": [
+          { "bearerAuth": []}
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Succeed"
+          },
+          "404": {
+            "description": "User does not exists"
+          },
+          "403": {
+            "description": "Cannot change the permission of yourself"
+          }
+        }
+      }
+    },
+    "/sessions": {
+      "post": {
+        "tags": ["Session"],
+        "summary": "Authentication user",
+        "description": "Authentication user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user": {
+                      "$ref": "#/definitions/User"
+                    },
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Email or password incorrect!"
+          }
+        }
+      }
+    },
+    "/profile/me": {
+      "get": {
+        "tags": ["Profile"],
+        "summary": "Show profile",
+        "description": "Show actual user profile",
+        "security": [
+          { "bearerAuth": []}
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User does not exist!"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Skill": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Collaborator": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "cpf": {
+          "type": "string"
+        },
+        "phone_number": {
+          "type": "string"
+        },
+        "validated": {
+          "type": "boolean"
+        },
+        "validated_at": {
+          "type": "string"
+        },
+        "matriculation": {
+          "type": "string"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "isAdmin": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

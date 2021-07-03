@@ -52,7 +52,7 @@
       "warn",
       {
         "newlinesBetween": "always",
-        "groups": ["module", "/^@shared/", ["parent", "sibling", "index"]],
+        "groups": ["module", "/^@(modules|shared|config|utils)/", ["parent", "sibling", "index"]],
         "alphabetize": { "order": "asc", "ignoreCase": true }
       }
     ],
@@ -60,6 +60,9 @@
       "error",
       { "devDependencies": ["**/*.spec.js"] }
     ],
+    "@typescript-eslint/no-unused-vars": ["error", {
+      "argsIgnorePattern": "_"
+    }],
     "prettier/prettier": "error"
   },
   "settings": {

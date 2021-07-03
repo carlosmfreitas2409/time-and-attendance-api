@@ -1,0 +1,13 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "postgres",
+  "password": "docker",
+  "database": "timeAttendance",
+  "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
+  "entities": ["./src/modules/**/entities/*.ts"],
+  "cli": {
+    "migrationsDir": "./src/shared/infra/typeorm/migrations"
+  }
+}
