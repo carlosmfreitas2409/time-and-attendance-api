@@ -20,7 +20,7 @@ class CollaboratorsRepository implements ICollaboratorsRepository {
   async findByID(id: number): Promise<Collaborator> {
     return this.repository.findOne({
       where: { id },
-      relations: ['appointments'],
+      relations: ['appointments', 'skills'],
     });
   }
 
