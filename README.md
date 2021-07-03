@@ -9,6 +9,7 @@
 <p align="center">
   <a href="#-sobre">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-rotas">Rotas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#information_source-instalação-e-uso">Instalação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#construction-requisitos-e-regras-de-negocio">Requisitos e RN</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-licença">Licença</a>
@@ -58,6 +59,12 @@ Esse projeto foi desenvolvido usando as seguintes tecnologias:
 - [JSON Web Token](https://www.npmjs.com/package/jsonwebtoken)
 - [UUID](https://github.com/uuidjs/uuid)
 - [Swagger](https://swagger.io)
+
+## 🍃 Rotas
+
+Após a inicialização da API, você pode navegar para o path `/api-docs`, em que encontrará a documentação da API com Swagger.
+
+**Exemplo:** http://localhost:3333/api-docs
 
 ## :information_source: Instalação e uso
 
