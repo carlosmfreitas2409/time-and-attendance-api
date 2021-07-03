@@ -451,6 +451,31 @@
           }
         }
       }
+    },
+    "/profile/me": {
+      "get": {
+        "tags": ["Profile"],
+        "summary": "Show profile",
+        "description": "Show actual user profile",
+        "security": [
+          { "bearerAuth": []}
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User does not exist!"
+          }
+        }
+      }
     }
   },
   "definitions": {
