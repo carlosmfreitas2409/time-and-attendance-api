@@ -38,7 +38,7 @@ class AuthenticateUserUseCase {
       throw new AppError('Email or password incorrect!', 401);
     }
 
-    const token = sign({}, authConfig.secret_token, {
+    const token = sign({ isAdmin: user.isAdmin }, authConfig.secret_token, {
       subject: user.id,
       expiresIn: authConfig.expires_in_token,
     });
