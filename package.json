@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn --poll src/shared/infra/http/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
-    "seed:skills": "ts-node-dev -r tsconfig-paths/register  src/shared/infra/typeorm/seed/skills.ts"
+    "seed:skills": "ts-node-dev -r tsconfig-paths/register  src/shared/infra/typeorm/seed/skills.ts",
+    "seed:admin": "ts-node-dev -r tsconfig-paths/register  src/shared/infra/typeorm/seed/admin.ts"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
